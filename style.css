@@ -1,0 +1,662 @@
+/* ========================================
+   SLEDEX LOGISTICS - PREMIUM NORDIC CHRISTMAS
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color Palette */
+  --bg-primary: #2c0e0e;
+  --bg-card: #ffffff;
+  --accent-gold: #d4af37;
+  --accent-green: #1a472a;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+  --status-red: #c1533f;
+  --gray-light: #f9f7f2;
+  --gray-muted: #8b8b8b;
+
+  /* Typography */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Lato", sans-serif;
+}
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ========================================
+   FALLING SNOW ANIMATION
+   ======================================== */
+
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  animation: falling linear infinite;
+  user-select: none;
+}
+
+.snowflake:nth-child(1) {
+  left: 5%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+.snowflake:nth-child(2) {
+  left: 15%;
+  animation-duration: 18s;
+  animation-delay: 2s;
+}
+.snowflake:nth-child(3) {
+  left: 25%;
+  animation-duration: 16s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(4) {
+  left: 35%;
+  animation-duration: 19s;
+  animation-delay: 1s;
+}
+.snowflake:nth-child(5) {
+  left: 45%;
+  animation-duration: 17s;
+  animation-delay: 3s;
+}
+.snowflake:nth-child(6) {
+  left: 55%;
+  animation-duration: 18s;
+  animation-delay: 0.5s;
+}
+.snowflake:nth-child(7) {
+  left: 65%;
+  animation-duration: 20s;
+  animation-delay: 2.5s;
+}
+.snowflake:nth-child(8) {
+  left: 75%;
+  animation-duration: 16s;
+  animation-delay: 1.5s;
+}
+.snowflake:nth-child(9) {
+  left: 85%;
+  animation-duration: 19s;
+  animation-delay: 3.5s;
+}
+.snowflake:nth-child(10) {
+  left: 95%;
+  animation-duration: 17s;
+  animation-delay: 2s;
+}
+
+@keyframes falling {
+  to {
+    transform: translateY(100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+
+.main-container {
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   PHASE TRANSITIONS
+   ======================================== */
+
+.phase {
+  display: none;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+.phase.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   PHASE 1: LOGIN SCREEN
+   ======================================== */
+
+.login-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.logo-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--gray-muted);
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Input Styles */
+.input-group {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.tracking-input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--gray-muted);
+  background: transparent;
+  padding: 15px 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.tracking-input::placeholder {
+  color: var(--gray-muted);
+}
+
+.tracking-input:focus {
+  border-bottom-color: var(--accent-gold);
+}
+
+.input-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent-gold);
+  transition: width 0.3s ease;
+}
+
+.tracking-input:focus ~ .input-underline {
+  width: 100%;
+}
+
+/* Button Styles */
+.btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-gold {
+  background: var(--accent-gold);
+  color: var(--text-dark);
+}
+
+.btn-gold:hover {
+  background: #e5c158;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Error Message */
+.error-message {
+  margin-top: 20px;
+  color: var(--status-red);
+  font-size: 0.9rem;
+  min-height: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
+/* ========================================
+   PHASE 2: LOADING SCREEN
+   ======================================== */
+
+.loading-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+  min-height: auto;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 5px;
+  background: var(--gray-light);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--accent-gold);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.loading-status {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+  min-height: 28px;
+  transition: opacity 0.4s ease;
+  line-height: 1.4;
+}
+
+.loading-subtext {
+  font-size: 0.85rem;
+  color: var(--gray-muted);
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+/* ========================================
+   PHASE 3: DASHBOARD
+   ======================================== */
+
+/* Status Header */
+.status-header {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+.status-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.status-badge {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 12px 20px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.status-badge.delayed {
+  color: #c9a428;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Timeline */
+.timeline {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gray-light);
+}
+
+.timeline-event {
+  display: flex;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.timeline-event:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--accent-green);
+  border: 3px solid var(--bg-card);
+  border-radius: 50%;
+  position: absolute;
+  left: 21px;
+  top: 0;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.timeline-event.completed .timeline-dot {
+  background: var(--gray-light);
+  border-color: var(--bg-card);
+}
+
+.timeline-event.current .timeline-dot {
+  background: var(--accent-gold);
+  border-color: var(--bg-card);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(212, 175, 55, 0);
+  }
+}
+
+.timeline-content {
+  margin-left: 60px;
+  flex: 1;
+}
+
+.timeline-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.timeline-event.completed .timeline-content h3 {
+  color: var(--gray-muted);
+}
+
+.timeline-content p {
+  font-size: 0.95rem;
+  color: var(--gray-muted);
+  line-height: 1.5;
+}
+
+.timeline-event.current .timeline-content p {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Voucher Card */
+.voucher-card {
+  background: var(--bg-card);
+  border: 3px solid var(--accent-gold);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+}
+
+.voucher-header {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #c9a428 100%);
+  padding: 30px;
+  text-align: center;
+}
+
+.voucher-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.voucher-content {
+  padding: 30px;
+  text-align: center;
+  background: var(--bg-card);
+}
+
+.voucher-content p {
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.voucher-footer {
+  padding: 25px 30px;
+  background: var(--accent-green);
+  text-align: center;
+}
+
+.voucher-footer p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 640px) {
+  .main-container {
+    padding: 20px 16px;
+    min-height: 100vh;
+  }
+
+  .login-card,
+  .loading-card {
+    padding: 40px 24px;
+    max-width: 100%;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+  }
+
+  .status-header {
+    padding: 30px 24px;
+    margin-bottom: 20px;
+  }
+
+  .status-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .status-badge {
+    font-size: 1.1rem;
+    padding: 10px 16px;
+  }
+  .status-badge.delayed {
+    animation: pulse 2s infinite;
+  }
+
+  .timeline {
+    padding: 30px 20px;
+    margin-bottom: 20px;
+  }
+
+  .timeline::before {
+    left: 22px;
+  }
+
+  .timeline-dot {
+    left: 14px;
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+
+  .timeline-content {
+    margin-left: 50px;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+  }
+
+  .voucher-header {
+    padding: 25px 20px;
+  }
+
+  .voucher-header h3 {
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+  }
+
+  .voucher-content {
+    padding: 20px;
+  }
+
+  .voucher-content p {
+    font-size: 0.95rem;
+  }
+
+  .voucher-footer {
+    padding: 20px;
+  }
+
+  .voucher-footer p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding: 15px 12px;
+  }
+
+  .login-card,
+  .loading-card {
+    padding: 35px 20px;
+  }
+
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .tracking-input {
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .status-header {
+    padding: 25px 20px;
+  }
+
+  .timeline {
+    padding: 25px 15px;
+  }
+}
+
+p.gift-emoji {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}

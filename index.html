@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SledEx Logistics - Szállítmány Nyomkövetés</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Falling Snow Background -->
+    <div class="snow-container">
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">❄</div>
+    </div>
+
+    <div class="main-container">
+      <!-- PHASE 1: LOGIN SCREEN -->
+      <div id="phase-1" class="phase active">
+        <div class="login-card">
+          <p class="gift-emoji">🎁</p>
+          <h1 class="logo">Himalája futárszolgálat</h1>
+          <p class="logo-subtitle">Karácsonyi aji nyomkövetés</p>
+
+          <div class="input-group">
+            <input
+              type="text"
+              id="tracking-code"
+              class="tracking-input"
+              placeholder="Szállítási kód"
+              autocomplete="off"
+            />
+            <span class="input-underline"></span>
+          </div>
+
+          <button id="login-btn" class="btn btn-gold">NYOMKÖVETÉS</button>
+
+          <p class="error-message" id="error-msg"></p>
+        </div>
+      </div>
+
+      <!-- PHASE 2: LOADING SCREEN -->
+      <div id="phase-2" class="phase">
+        <div class="loading-card">
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+
+          <p class="loading-status" id="loading-status">
+            Manók ébresztése és adatbázis kapcsolása...
+          </p>
+
+          <p class="loading-subtext">Kérjük, várjon...</p>
+        </div>
+      </div>
+
+      <!-- PHASE 3: DASHBOARD -->
+      <div id="phase-3" class="phase">
+        <!-- Status Header -->
+        <div class="status-header">
+          <h2>Szállítmány Státusza</h2>
+          <p class="status-badge delayed">KÉSIK / DELAYED</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="timeline-event completed">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>🏔️ Himalája - 12.02</h3>
+              <p>
+                A kasmírkecskék sikeresen megfésülve. A gyapjú puhasága: 10/10.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event completed">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>🏭 Szövőgyár - 12.05</h3>
+              <p>
+                A sál elkészült. A minőségellenőrök 3 órán át simogatták, mert
+                nem tudták abbahagyni.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event completed">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>❄️ Északi-sark - 12.08</h3>
+              <p>A csomag útnak indult.</p>
+            </div>
+          </div>
+
+          <div class="timeline-event current">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <h3>🚚 FUTÁRNÁL</h3>
+              <p>
+                A futár megállt egy kávéra, és annyira megtetszett neki a
+                pihepuha csomag, hogy nehezen engedi el.
+              </p>
+              <p>☕ Tárgyalások folyamatban...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voucher Card -->
+        <div class="voucher-card">
+          <div class="voucher-header">
+            <h3>🎀 BÁNATŰZŐ CSOMAG 🎀</h3>
+          </div>
+          <div class="voucher-content">
+            <p>
+              A várakozás idejére a rendszer engedélyezi a zacskóban található
+              🥤 Cola Zero és 🍫 Csoki azonnali elfogyasztását.
+            </p>
+          </div>
+          <div class="voucher-footer">
+            <p>🎄 Az igazi ajándék hamarosan érkezik! Boldog Karácsonyt! 🎄</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
