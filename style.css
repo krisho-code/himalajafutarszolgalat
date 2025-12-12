@@ -372,6 +372,7 @@ body {
 .status-badge.delayed {
   color: #c9a428;
   animation: pulse 2s infinite;
+  display: block; 
 }
 
 @keyframes pulse {
@@ -659,4 +660,8 @@ body {
 p.gift-emoji {
   font-size: 3rem;
   margin-bottom: 10px;
+}
+
+img.scarf {
+   display: block;
 }
