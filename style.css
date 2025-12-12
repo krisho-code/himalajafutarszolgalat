@@ -345,6 +345,10 @@ body {
 
 /* Status Header */
 .status-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: var(--bg-card);
   border-radius: 16px;
   padding: 40px;
