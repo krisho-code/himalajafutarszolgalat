@@ -4,8 +4,8 @@
 
 // Constants
 const TRACKING_CODE = "SOFT-404";
-const LOADING_DURATION = 10000; // 10 seconds in milliseconds
-const STATUS_MESSAGE_INTERVAL = 3300; // ~3.3 seconds
+const LOADING_DURATION = 12000; // MÓDOSÍTVA: 12 másodperc
+const STATUS_MESSAGE_INTERVAL = 4000; // MÓDOSÍTVA: 4 másodperc üzenetenként
 
 // DOM Elements
 const trackingCodeInput = document.getElementById("tracking-code");
@@ -19,7 +19,7 @@ const loadingStatus = document.getElementById("loading-status");
 
 // Status messages
 const statusMessages = [
-  "Manók ébresztése és adatbázis kapcsolása...",
+  "Manók ébresztése és a futárszolgálat kapcsolása...",
   "Kasmír-puhaság index ellenőrzése (100%)...",
   "Szán útvonaltervezés a megadott címre...",
 ];
@@ -71,7 +71,7 @@ function startLoadingPhase() {
   const startTime = Date.now();
   let messageIndex = 0;
 
-  // Progress bar animation (0% to 100% over 10 seconds)
+  // Progress bar animation (0% to 100% over 12 seconds)
   const progressInterval = setInterval(() => {
     const elapsed = Date.now() - startTime;
     const progress = (elapsed / LOADING_DURATION) * 100;
@@ -89,7 +89,7 @@ function startLoadingPhase() {
     }
   }, 30); // Update every 30ms for smooth animation
 
-  // Status message rotation (every ~3.3 seconds)
+  // Status message rotation (every 4 seconds)
   let statusMessageStartTime = Date.now();
   const statusMessageInterval = setInterval(() => {
     const elapsed = Date.now() - statusMessageStartTime;
